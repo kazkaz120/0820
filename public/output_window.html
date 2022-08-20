@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <style>
+    #child1 {
+        background: url(https://beiz.jp/images_S/japanese-paper/japanese-paper_00163.jpg);
+    }
+    #child2 {
+        background-color: lightblue;
+    }
+    @media (min-width: 600px) {
+      #parent {
+        display: flex;
+      }
+      #child1 {
+        flex-grow: 1;
+      }
+      #child2 {
+        flex-grow: 1;
+      }
+    }
+
+        </style>
+    </head>
+    <body>
+        <div id="parent">
+            <div id="child1">
+            <img src="//3.bp.blogspot.com/-ja1BOWayFh4/VpjBseVj_MI/AAAAAAAA27E/89LBG56XJg8/s400/hyousyoudai.png">
+            <h1 style="text-align: center; color:red">１位：『{{.Rank1_moji}}』 {{.Rank1_time}}分</h1>
+            <h1 style="text-align: center; color:blue">２位：『{{.Rank2_moji}}』 {{.Rank2_time}}分</h1>
+            <h1 style="text-align: center">３位：『{{.Rank3_moji}}』 {{.Rank3_time}}分</h1>
+            </div>
+            <div id="child2">
+                <h1 style="text-align: center; color:brown">トップへ戻る</h1>
+                <a href="/">
+                    <button type="button">トップ画面</button>
+                </a>
+            </div>
+        </div>
+    </body>
+</html>
