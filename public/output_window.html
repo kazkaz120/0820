@@ -1,12 +1,6 @@
 <html>
     <head>
         <style>
-    #child1 {
-        background: url(https://beiz.jp/images_S/japanese-paper/japanese-paper_00163.jpg);
-    }
-    #child2 {
-        background-color: lightblue;
-    }
     @media (min-width: 600px) {
       #parent {
         display: flex;
@@ -19,22 +13,123 @@
       }
     }
 
+    .grid-area {
+  display: grid;
+  height: 100vh;                /* grid全体の高さを設定 */
+  grid-template-rows: 16% 28% 28% 28%;  /* gridの割合が8:2になるよう2行用意 */
+  grid-template-columns: 100%;  /* 横幅いっぱいに1列用意 */
+}
+
+.upper-area {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+
+.top-area {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.middle-area {
+  grid-row: 3;
+  grid-column: 1;
+}
+
+
+.bottom-area {
+  grid-row: 4;
+  grid-column: 1;
+}
+
+big{
+    padding: 0.5em 0;/*上下の余白*/
+  border-top: solid 3px #364e96;/*上線*/
+  border-bottom: solid 3px #364e96;/*下線*/
+}
+
+
         </style>
+        <link rel="stylesheet" type="text/css" href="/static/juni.css">
     </head>
     <body>
-        <div id="parent">
+        <div id="particles-js"></div>
+        <div id="wrapper">
+            <div id="parent" style="text-align:center">
             <div id="child1">
-            <img src="//3.bp.blogspot.com/-ja1BOWayFh4/VpjBseVj_MI/AAAAAAAA27E/89LBG56XJg8/s400/hyousyoudai.png">
-            <h1 style="text-align: center; color:red">１位：『{{.Rank1_moji}}』 {{.Rank1_time}}分</h1>
-            <h1 style="text-align: center; color:blue">２位：『{{.Rank2_moji}}』 {{.Rank2_time}}分</h1>
-            <h1 style="text-align: center">３位：『{{.Rank3_moji}}』 {{.Rank3_time}}分</h1>
+              <img src="//3.bp.blogspot.com/-ja1BOWayFh4/VpjBseVj_MI/AAAAAAAA27E/89LBG56XJg8/s400/hyousyoudai.png" width="300" height="300">
+              <h1 style="text-align: center; color:gold">１位：『{{.Rank1_moji}}』 {{.Rank1_clock}}時間　{{.Rank1_minute}}分</h1>
+              <h1 style="text-align: center; color:silver">２位：『{{.Rank2_moji}}』 {{.Rank2_clock}}時間　{{.Rank2_minute}}分</h1>
+              <h1 style="text-align: center; color:brown">３位：『{{.Rank3_moji}}』 {{.Rank3_clock}}時間　{{.Rank3_minute}}分</h1>
+              <form method="POST" action="/output_juni_month">
+                 <input type="month" name="month" placeholder="月" >
+              <input type="submit" value="月別表示">
             </div>
             <div id="child2">
+<!--              <div>
+
+
+              
                 <h1 style="text-align: center; color:brown">トップへ戻る</h1>
-                <a href="/">
+                <a href="/top">
                     <button type="button">トップ画面</button>
                 </a>
+              </div> -->
+              <div class="grid-area">
+              <div class="upper-area">
+                <big style="color: green;">項目別パーセンテージ</big>
+              </div>  
+              <div class="top-area">
+                <div id="parent" style="text-align:left">
+                  <big style="color: green;">投資　 </big><br>
+                  <div id="child1">
+                  <p>{{ range .Uniq_toshi }}</p>
+                  <p>{{ . }}</p>
+                  {{ end }}
+                 </div>
+                 <div id="child2">
+                   {{ range .Parc_uniq_count_toshi }}
+                   <p style="color: red;">{{ . }} %</p>
+                   {{ end }}
+                  </div>
+                </div>
+                </div>
+                <div class="middle-area">
+                  <div id="parent" style="text-align:left">
+                  <big style="color: green;">消費　 </big><br>
+                  <div id="child1">
+                    <p>{{ range .Uniq_shohi }}</p>
+                    <p>{{ . }}</p>
+                    {{ end }}
+                  </div>
+                  <div id="child2">
+                    {{ range .Parc_uniq_count_shohi }}
+                    <p style="color: red;">{{ . }} %</p>
+                    {{ end }}
+                  </div>
+                  </div>
+                  </div>
+                  <div class="bottom-area">
+                 <div id="parent" style="text-align:left">
+                  <big style="color: green;">浪費　 </big><br>
+                  <div id="child1">
+                      <p>{{ range .Uniq_rouhi }}</p>
+                      <p>{{ . }}</p>
+                      {{ end }}
+                    </div>
+                    <div id="child2">
+                      {{ range .Parc_uniq_count_rouhi }}
+                      <p style="color: red;">{{ . }} %</p>
+                      {{ end }}
+                    </div>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+              </div>              
             </div>
-        </div>
+          </div>
+        <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script src="/static/juni.js"></script>
     </body>
 </html>

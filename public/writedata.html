@@ -1,17 +1,24 @@
 <html>
     <head>
         <style>
-        body{background-color: greenyellow;}
-        </style>
+body {
+  background-image:
+    radial-gradient(at 0 0, #ff9 60%, transparent 90%),
+    radial-gradient(at 110% 20%, #f80 20%, transparent 30%),
+    radial-gradient(at 110% 60%, #f08 10%, transparent 40%),
+    radial-gradient(at 100% 100%, #bd29d0, transparent);
+  background-attachment: fixed;
+}
+</style>
     </head>
     <body>
-        <div>
+        <div style="text-align: center">
             
             <h1>フォームテスト</h1>
             <form method="POST" action="write">
-                <input type="text" name="date" placeholder="日付" >
-                <input type="text" name="time_start" placeholder="開始時間" >
-                <input type="text" name="time_end" placeholder="終了時間" >
+                <input type="date" min="2022-01-01" name="date" placeholder="日付" >
+                <input type="time" name="time_start" placeholder="開始時間" >
+                <input type="time" name="time_end" placeholder="終了時間" >
                 <input type="text" name="to_do" placeholder="行った行動" >
                 <input type="text" name="which_do" placeholder="投資か消費か浪費か" >
                 <input type="submit" value="代入">
@@ -20,6 +27,18 @@
             <a href="/">
                 <button type="button">トップ画面</button>
             </a>
+            <h1>削除画面</h1>
+            <a href="/checkdate_month">
+                <button type="button">項目削除(月別)</button>
+              </a>
+              <a href="/checkdate_week">
+                <button type="button">項目削除(週別)</button>
+              </a>
+              <a href="/checkdate_day">
+                <button type="button">項目削除(日別)</button>
+              </a>
+
+
         </div>
     </body>
 </html>

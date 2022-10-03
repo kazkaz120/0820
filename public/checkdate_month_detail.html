@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <style>
+        body{background-color: greenyellow;}
+        table.list {
+    width: 100%;
+    border-collapse:separate;
+    border-spacing: 0;
+    border: 1px solid #3c6690;
+  }
+   
+  table.list th{
+    text-align: center;
+    color:white;
+    background: linear-gradient(#829ebc,#225588);
+    /*border: 1px solid #3c6690;*/
+    border-width: 1px 0px;
+    border-color: #3c6690;
+    border-style: solid;
+    padding: 10px 0;
+  }
+   
+  table.list td{
+    text-align: center;
+    /*border: 1px solid #a8b7c5;*/
+    border-width: 1px 0px;
+    border-color: #a8b7c5;
+    border-style: solid;
+    border-top:none;
+    padding: 10px 0;
+  }
+        </style>
+    </head>
+    <body>
+        <div style="text-align: center">
+            
+            <h1>詳細</h1>
+
+            <table class="list">
+                <tr>
+                    <th>日付</th>
+                    <th>開始時間</th>
+                    <th>終了時間</th>
+                    <th>行ったこと</th>
+                    <th>投資or消費or浪費</th>
+                    <th>ID</th>
+                </tr>
+                {{ range . }}
+                <tr>
+                    <td>{{ .Date }}</td>
+                    <td>{{ .Time_start }}</td>
+                    <td>{{ .Time_end }}</td>
+                    <td>{{ .To_do }}</td>
+                    <td>{{ .Which_do }}</td>
+                    <td>
+                        <form method="post" action="/delete/{{ .ID }}">
+                        <input type="submit" value="削除">
+                        </form>
+                    </td>
+            </tr>
+            {{ end }}
+            </table>
+            <h1>トップへ戻る</h1>
+            <a href="/top">
+                <button type="button">トップ画面</button>
+            </a>
+        </div>
+    </body>
+</html>

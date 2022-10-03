@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <style>         
+h2{
+    padding: 0.5em 0;/*上下の余白*/
+  border-top: solid 3px #364e96;/*上線*/
+  border-bottom: solid 3px #364e96;/*下線*/
+}
+        </style>
+    <link rel="stylesheet" href="/static/reset.css">
+    <link rel="stylesheet" href="/static/top.css">
+    </head>
+      <body>
+        <div id="particles-js">
+          <canvas class="particles-js-canvas-el" width="610" height="901" style="width: 100%; height: 100%;"></canvas>
+        </div>
+          <div id="wrapper">
+            <h2 style="color: gold;">どの項目か選択下さい。</h2>
+            <a href="/checkdate_month">
+                <button type="button">月ごと</button>
+            </a>            
+            <a href="/checkdate_week">
+              <button type="button">週ごと</button>
+            </a>
+            <a href="/checkdate_date">
+              <button type="button">日ごと</button>
+            </a>
+          </div>
+        <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script src="/static/top.js"></script>  
+      </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+        html {
+            min-height: 100%;
+        }
+        .gradient {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(
+              to top,
+              #fcc5e4 0%,
+              #fda34b 15%,
+              #ff7882 35%,
+              #c8699e 52%,
+              #7046aa 71%,
+              #0c1db8 87%,
+              #020f75 100%
+            );
+          }
+
+          .container {
+            position: absolute; /* 絶対指定 */
+            top: 50%;  /* 上の要素を中央配置 */
+            left: 50%; /* 左右の要素を中央配置 */
+            width: 800px;
+            height: 400px;
+            margin: -200px 0 0 -400px;
+                  }
+        </style>
+        <meta charset="utf-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script type="text/javascript">
+            if(localStorage.getItem('token') === null) {
+                location.href = '/'
+            }
+        </script>
+        <title>todos - Simple Todo</title>
+    </head>
+    <body>
+        <div id="todo-list">
+            <h1 id="title">'s Todos</h1>
+            <div>
+                <input type="text" name="name" v-model="newTodo" placeholder="new todo">
+                <button type="button" name="add" @click="postTodo">Add</button>
+            </div>
+            <div v-if="todos.length === 0">
+                <p>No your todos...</p>
+            </div>
+            <ul v-else id="todo-list">
+                <li v-for="(todo, index) in todos" :key="index">
+                    <input type="checkbox" :id="index" name="completed" :checked="todo.completed" @click="checkTodo(todo.id)">
+                    <label :for="index"></label>
+                    <button type="button" name="delete" @click="deleteTodo(todo.id)">X</button>
+                </li>
+            </ul>
+            <button type="button" name="logout" @click="logout()">logout</button>
+        </div>
+        <script src="assets/js/todoList.js"></script>
+    </body>
+</html>

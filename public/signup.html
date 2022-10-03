@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <style>
+            html {
+                min-height: 100%;
+            }
+            .gradient {
+                width: 100%;
+                height: 150px;
+                background: linear-gradient(
+                  to top,
+                  #fcc5e4 0%,
+                  #fda34b 15%,
+                  #ff7882 35%,
+                  #c8699e 52%,
+                  #7046aa 71%,
+                  #0c1db8 87%,
+                  #020f75 100%
+                );
+              }
+    
+              .container {
+                position: absolute; /* 絶対指定 */
+                top: 50%;  /* 上の要素を中央配置 */
+                left: 50%; /* 左右の要素を中央配置 */
+                width: 800px;
+                height: 400px;
+                margin: -200px 0 0 -400px;
+                      }
+            </style>
+        <meta charset="utf-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <title>signup - Simple Todo</title>
+    </head>
+    <body class="gradient">
+            <div class="container">
+        <h1>SIGNUP</h1>
+        <form id="signup-form">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" v-model:value="name">
+            </div>
+            <div>
+                <label for="pwd">Password:</label>
+                <input type="password" id="pwd" name="password" v-model:value="password">
+            </div>
+            <button type="button" name="button" @click="signup">signup</button>
+        </form>
+        </div>
+        <script src="static/signup.js"></script>
+    </body>
+</html>
